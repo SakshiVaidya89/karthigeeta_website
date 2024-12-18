@@ -46,3 +46,5 @@ gsap.from("h1", {
   
     parallax.style.transform = 'translateY(' + scrollPosition * 0.5 + 'px)';
   });
+
+  
