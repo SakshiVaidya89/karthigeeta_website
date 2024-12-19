@@ -47,4 +47,14 @@ gsap.from("h1", {
     parallax.style.transform = 'translateY(' + scrollPosition * 0.5 + 'px)';
   });
 
-  
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      // Remove active class from all links
+      navLinks.forEach(item => item.classList.remove('active'));
+      
+      // Add active class to the clicked link
+      this.classList.add('active');
+    });
+  });

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects Page</title>
+    <link href="./styles.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .filter {
+            top: 7rem;
+            font-size: 1.5rem;
+        }
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            color: white; /* White text color for contrast */
+            text-align: center;
+            padding: 0.5rem; /* Add padding for better readability */
+            font-size: 2rem; /* Adjust font size */
+            background: rgba(0, 0, 0, 0.5);
+        }
+        image {
+            background: rgba(0, 0, 0, 0.5);
+            height: 0.5rem;
+            padding: 0.5rem;
+        }
+        [data-category] {
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-oswald">
+    <nav id="navbar" class="w-full fixed top-0 z-50 flex justify-between items-center border-t-2 border-b-2 border-white bg-[#3a5264] transition-all duration-300">
+        <!-- Logo Section -->
+        <a href="#" class="text-3xl font-normal uppercase text-white tracking-wide flex items-center ml-40 relative">
+          <!-- Logo Container with Adjustments -->
+          <img src="./assets/logo.png" alt="Logo" class="h-24 w-auto">
+          <span class="ml-4">Karthigeeta &<br>Associates</span>
+        </a>
+      
+        <!-- Navigation Links -->
+        <div class="flex items-center space-x-6 uppercase text-lg mr-40 font-normal">
+          <a href="./index.html" class="nav-link px-4 py-2">Home</a>
+          <a href="#" class="nav-link px-4 py-2">About Us</a>
+          <a href="#" class="nav-link px-4 py-2">Projects</a>
+          <a href="#" class="nav-link px-4 py-2">Contact Us</a>
+        </div>
+      </nav>
+    <!-- Wrapper -->
+    <div class="relative">
+        <!-- Toggle Filters Button -->
+        <button id="openFilters" class="filter fixed right-4 bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded z-10">
+            Filters
+        </button>
+
+        <!-- Filter Menu -->
+        <div id="filterMenu" class="fixed top-0 right-0 h-full w-72 bg-black shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+            <!-- Close Button -->
+            <button id="closeFilters" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                &#x2715; <!-- Close Icon (X) -->
+            </button>
+
+            <!-- Filters Content -->
+            <div class="p-6 space-y-8">
+                <h2 class="text-lg font-bold uppercase">Filters</h2>
+
+                <!-- Sectors -->
+                <div>
+                    <h3 class="text-sm font-semibold uppercase mb-2">Sector</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#" data-filter="all" class="hover:text-yellow-500">All</a></li>
+                        <li><a href="#" data-filter="residential" class="hover:text-yellow-500">Residential</a></li>
+                        <li><a href="#" data-filter="interior" class="hover:text-yellow-500">Interiors</a></li>
+                        <li><a href="#" data-filter="cultural" class="hover:text-yellow-500">Cultural</a></li>
+                        <li><a href="#" data-filter="commercial" class="hover:text-yellow-500">Commercial</a></li>
+                        <li><a href="#" data-filter="spiritual" class="hover:text-yellow-500">Spiritual</a></li>
+                        <li><a href="#" data-filter="mixedUse" class="hover:text-yellow-500">Mixed Use</a></li>
+                        <li><a href="#" data-filter="hospitality" class="hover:text-yellow-500">Hospitality</a></li>
+                        <li><a href="#" data-filter="academic" class="hover:text-yellow-500">Academic</a></li>
+                        <li><a href="#" data-filter="conceptual" class="hover:text-yellow-500">Conceptual</a></li>
+                        <li><a href="#" data-filter="workplace" class="hover:text-yellow-500">Workplace</a></li>
+                        <li><a href="#" data-filter="landscape" class="hover:text-yellow-500">Landscape & Planning</a></li>
+                        <li><a href="#" data-filter="product" class="hover:text-yellow-500">Products</a></li>
+                    </ul>
+                </div>
+
+                <!-- Designer -->
+                <div>
+                    <h3 class="text-sm font-semibold uppercase mb-2">Designer</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#" class="hover:text-yellow-500">All</a></li>
+                        <li><a href="#" class="hover:text-yellow-500">Alan Maskin</a></li>
+                        <li><a href="#" class="hover:text-yellow-500">Jim Olson</a></li>
+                        <li><a href="#" class="hover:text-yellow-500">Kirsten Ring Murray</a></li>
+                        <li><a href="#" class="hover:text-yellow-500">Kevin M. Kudo-King</a></li>
+                        <li><a href="#" class="hover:text-yellow-500">Tom Kundig</a></li>
+                    </ul>
+                </div>
+
+                <!-- Region -->
+                <div>
+                    <h3 class="text-sm font-semibold uppercase mb-2">Region</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#" class="hover:text-yellow-500">All</a></li>
+                        <li><a href="#" class="hover:text-yellow-500">North America</a></li>
+                        <li><a href="#" class="hover:text-yellow-500">Asia</a></li>
+                        <li><a href="#" class="hover:text-yellow-500">Europe</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="p-20">
+            <section class="text-center py-20 text-white">
+                <h2 class="text-lg tracking-widest">OUR WORK</h2>
+                <h1 class="text-4xl font-bold text-white mt-2">RECENT PROJECTS</h1>
+                <br>
+                <div class="flex justify-center mt-2">
+                    <div class="bg-yellow-500 h-0.5 w-40"></div>
+                </div>
+                <p class="mt-4 px-4 max-w-3xl mx-auto font-sans">
+                  We had the privilege of handling a range of projects. Each project is of a specific nature, demanding a particular character, unique to its own geographic location.
+                </p>
+              </section>
+            <div class="grid grid-cols-2">
+                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="residential">
+                    <img src="./assets/carousel/slide1.jpg" alt="Institutions" class="image w-full h-72 object-cover">
+                    <p class="image-caption">Residential Project</p>
+                </div>
+                
+                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="commercial">
+                    <img src="./assets/carousel/slide2.jpg" alt="Institutions" class="image w-full h-72 object-cover">
+                    <p class="image-caption">Commercial Project</p>
+                </div>
+                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="interior">
+                    <img src="./assets/carousel/slide3.webp" alt="Institutions" class="image w-full h-72 object-cover">
+                    <p class="image-caption">Interiors Project</p>
+                </div>
+                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="cultural">
+                    <img src="./assets/productImages/product1.jpg" alt="Institutions" class="image w-full h-72 object-cover">
+                    <p class="image-caption">Cultural Project</p>
+                </div>
+                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="spiritual">
+                    <img src="./assets/carousel/slide1.jpg" alt="Institutions" class="image w-full h-72 object-cover">
+                    <p class="image-caption">Spiritual Project</p>
+                </div>
+                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="mixedUse">
+                    <img src="./assets/carousel/slide2.jpg" alt="Institutions" class="image w-full h-72 object-cover">
+                    <p class="image-caption">Mixed Use Project</p>
+                </div>
+                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="hospitality">
+                    <img src="./assets/carousel/slide3.webp" alt="Institutions" class="image w-full h-72 object-cover">
+                    <p class="image-caption">Hospitality Project</p>
+                </div>
+                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="academic">
+                    <img src="./assets/productImages/product1.jpg" alt="Institutions" class="image w-full h-72 object-cover">
+                    <p class="image-caption">Academic Project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            // Remove active class from all links
+            navLinks.forEach(item => item.classList.remove('active'));
+            
+            // Add active class to the clicked link
+            this.classList.add('active');
+        });
+        });
+
+        const filterMenu = document.getElementById('filterMenu');
+        const openFilters = document.getElementById('openFilters');
+        const closeFilters = document.getElementById('closeFilters');
+
+        openFilters.addEventListener('click', () => {
+            filterMenu.classList.remove('translate-x-full');
+        });
+
+        closeFilters.addEventListener('click', () => {
+            filterMenu.classList.add('translate-x-full');
+        });
+
+    </script>
+    <script src="projects.js"></script>
+</body>
+</html>
