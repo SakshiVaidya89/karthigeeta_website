@@ -4,6 +4,43 @@
         font-family: 'Oswald', sans-serif;
     }
 
+    .font-lora {
+      font-family: "Lora", serif;
+      font-optical-sizing: auto;
+      font-weight: <weight>;
+      font-style: normal;
+    }
+
+    .hind-madurai-light {
+      font-family: "Hind Madurai", serif;
+      font-weight: 300;
+      font-style: normal;
+    }
+    
+    .hind-madurai-regular {
+      font-family: "Hind Madurai", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+    
+    .hind-madurai-medium {
+      font-family: "Hind Madurai", serif;
+      font-weight: 500;
+      font-style: normal;
+    }
+    
+    .hind-madurai-semibold {
+      font-family: "Hind Madurai", serif;
+      font-weight: 600;
+      font-style: normal;
+    }
+    
+    .hind-madurai-bold {
+      font-family: "Hind Madurai", serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
     /* Base link style */
     .nav-link {
     position: relative;
@@ -75,35 +112,6 @@
         object-fit: cover; 
     }
 
-    /* Add to your styles.css */
-    @media (max-width: 768px) {
-      .carousel-caption {
-        display: block !important; /* Force display */
-        position: absolute
-        bottom: 20%;
-        left: 20%;
-        right: 10%;
-        text-align: left;
-        padding: 1rem;
-        border-radius: 5px;
-      }
-
-      .carousel-caption h1 {
-        font-size: 1.5rem !important;
-        margin-bottom: 0.5rem;
-      }
-
-      .carousel-caption h2 {
-        font-size: 2rem !important;
-        line-height: 1.2;
-        margin-bottom: 0.5rem;
-      }
-
-      .carousel-caption p {
-        font-size: 0.875rem !important;
-        line-height: 1.4;
-      }
-    }
 
     @media (max-width: 768px) {
     .carousel-inner img {

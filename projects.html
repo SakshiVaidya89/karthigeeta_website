@@ -3,70 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects Page</title>
+    <title>Responsive Projects Page</title>
     <link href="./styles.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Custom styles for better responsiveness */
         .filter {
-            top: 7rem;
-            font-size: 1.5rem;
+            top: 6rem;
+            font-size: 1.2rem;
         }
+
         .image-caption {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            color: white; /* White text color for contrast */
+            color: white;
             text-align: center;
-            padding: 0.5rem; /* Add padding for better readability */
-            font-size: 2rem; /* Adjust font size */
-            background: rgba(0, 0, 0, 0.5);
-        }
-        image {
-            background: rgba(0, 0, 0, 0.5);
-            height: 0.5rem;
             padding: 0.5rem;
+            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.6);
         }
-        [data-category] {
-            transition: all 0.3s ease-in-out;
+
+        /* Filter menu scrollability */
+        #filterMenu {
+            overflow-y: auto;
+        }
+
+        /* Custom media queries */
+        @media (max-width: 1024px) {
+            .filter {
+                font-size: 1rem;
+                
+            }
+            .image-caption {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .filter {
+                top: 6rem;
+                font-size: 0.9rem;
+            }
+            .image-caption {
+                font-size: 0.9rem;
+            }
+            .navbar-title {
+                font-size: 1.5rem; /* Adjust font size for mobile devices */
+            }
         }
     </style>
 </head>
 <body class="bg-gray-900 text-white font-oswald">
+    <!-- Navigation Bar -->
     <nav id="navbar" class="w-full fixed top-0 z-50 flex justify-between items-center border-t-2 border-b-2 border-white bg-[#3a5264] transition-all duration-300">
         <!-- Logo Section -->
-        <a href="#" class="text-3xl font-normal uppercase text-white tracking-wide flex items-center ml-40 relative">
-          <!-- Logo Container with Adjustments -->
-          <img src="./assets/logo.png" alt="Logo" class="h-24 w-auto">
-          <span class="ml-4">Karthigeeta &<br>Associates</span>
+        <a href="#" class="text-3xl font-normal uppercase text-white tracking-wide flex items-center ml-4 sm:ml-10 relative">
+          <img src="./assets/logo.png" alt="Logo" class="h-16 sm:h-16 w-auto">
+          <span class="ml-2 sm:ml-4 sm:text-sm  navbar-title">Karthigeeta &<br>Associates</span>
         </a>
-      
+
         <!-- Navigation Links -->
-        <div class="flex items-center space-x-6 uppercase text-lg mr-40 font-normal">
-          <a href="./index.html" class="nav-link px-4 py-2">Home</a>
-          <a href="#" class="nav-link px-4 py-2">About Us</a>
-          <a href="#" class="nav-link px-4 py-2">Projects</a>
-          <a href="#" class="nav-link px-4 py-2">Contact Us</a>
+        <div class="hidden md:flex items-center space-x-4 sm:space-x-6 uppercase text-sm sm:text-lg mr-4 ml-4 sm:mr-10 font-normal">
+          <a href="./index.html" class="nav-link px-2 sm:px-4 py-2">Home</a>
+          <a href="#" class="nav-link px-2 sm:px-4 py-2">About Us</a>
+          <a href="./projects.html" class="nav-link px-2 sm:px-4 py-2">Projects</a>
+          <a href="#" class="nav-link px-2 sm:px-4 py-2">Contact Us</a>
         </div>
-      </nav>
+
+        <!-- Hamburger Menu -->
+        <div class="md:hidden mr-4">
+            <button id="hamburger" class="text-white">
+                ☰
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 transform -translate-x-full transition-transform duration-300 z-50">
+        <button id="closeMobileMenu" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">
+            &#x2715;
+        </button>
+        <div class="flex flex-col items-center justify-center space-y-6 mt-20 text-xl uppercase">
+            <a href="./index.html" class="nav-link">Home</a>
+            <a href="#" class="nav-link">About Us</a>
+            <a href="./projects.html" class="nav-link">Projects</a>
+            <a href="#" class="nav-link">Contact Us</a>
+        </div>
+    </div>
+
     <!-- Wrapper -->
     <div class="relative">
         <!-- Toggle Filters Button -->
-        <button id="openFilters" class="filter fixed right-4 bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded z-10">
+        <button id="openFilters" class="filter fixed right-4 bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded z-100">
             Filters
         </button>
 
         <!-- Filter Menu -->
-        <div id="filterMenu" class="fixed top-0 right-0 h-full w-72 bg-black shadow-lg transform translate-x-full transition-transform duration-300 z-50">
-            <!-- Close Button -->
+        <div id="filterMenu" class="fixed top-0 right-0 h-full w-72 sm:w-64 bg-black shadow-lg transform translate-x-full transition-transform duration-300 z-50">
             <button id="closeFilters" class="absolute top-4 right-4 text-gray-400 hover:text-white">
-                &#x2715; <!-- Close Icon (X) -->
+                &#x2715;
             </button>
-
-            <!-- Filters Content -->
-            <div class="p-6 space-y-8">
+            <div class="p-4 sm:p-6 space-y-4 sm:space-y-8">
                 <h2 class="text-lg font-bold uppercase">Filters</h2>
-
                 <!-- Sectors -->
                 <div>
                     <h3 class="text-sm font-semibold uppercase mb-2">Sector</h3>
@@ -112,52 +152,58 @@
                 </div>
             </div>
         </div>
+            </div>
+        </div>
 
         <!-- Gallery Section -->
-        <div class="p-20">
-            <section class="text-center py-20 text-white">
-                <h2 class="text-lg tracking-widest">OUR WORK</h2>
-                <h1 class="text-4xl font-bold text-white mt-2">RECENT PROJECTS</h1>
+        <div class="px-4 sm:px-8 md:px-20 py-12">
+            <section class="text-center py-10 text-white">
+                <h2 class="text-sm sm:text-lg tracking-widest">OUR WORK</h2>
+                <h1 class="text-2xl sm:text-4xl font-bold text-white mt-2">RECENT PROJECTS</h1>
                 <br>
                 <div class="flex justify-center mt-2">
-                    <div class="bg-yellow-500 h-0.5 w-40"></div>
+                    <div class="bg-yellow-500 h-0.5 w-24 sm:w-40"></div>
                 </div>
-                <p class="mt-4 px-4 max-w-3xl mx-auto font-sans">
-                  We had the privilege of handling a range of projects. Each project is of a specific nature, demanding a particular character, unique to its own geographic location.
+                <p class="mt-4 px-2 sm:px-4 max-w-3xl mx-auto font-sans text-sm sm:text-base">
+                    We had the privilege of handling a range of projects. Each project is of a specific nature, demanding a particular character, unique to its own geographic location.
                 </p>
-              </section>
-            <div class="grid grid-cols-2">
-                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="residential">
-                    <img src="./assets/carousel/slide1.jpg" alt="Institutions" class="image w-full h-72 object-cover">
-                    <p class="image-caption">Residential Project</p>
+            </section>
+
+            <!-- Responsive Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Example Gallery Item -->
+                <div class="relative bg-gray-800" data-category="residential">
+                    <a href="./resident.html">
+                        <img src="./assets/carousel/slide1.jpg" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
+                        <p class="image-caption">Residential Project</p>
+                    </a>
                 </div>
-                
-                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="commercial">
-                    <img src="./assets/carousel/slide2.jpg" alt="Institutions" class="image w-full h-72 object-cover">
-                    <p class="image-caption">Commercial Project</p>
+                <div class="relative bg-gray-800" data-category="interior">
+                    <img src="./assets/carousel/slide2.jpg" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
+                    <p class="image-caption">Interior Project</p>
                 </div>
-                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="interior">
-                    <img src="./assets/carousel/slide3.webp" alt="Institutions" class="image w-full h-72 object-cover">
-                    <p class="image-caption">Interiors Project</p>
-                </div>
-                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="cultural">
-                    <img src="./assets/productImages/product1.jpg" alt="Institutions" class="image w-full h-72 object-cover">
+                <div class="relative bg-gray-800" data-category="cultural">
+                    <img src="./assets/carousel/slide3.webp" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
                     <p class="image-caption">Cultural Project</p>
                 </div>
-                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="spiritual">
-                    <img src="./assets/carousel/slide1.jpg" alt="Institutions" class="image w-full h-72 object-cover">
+                <div class="relative bg-gray-800" data-category="commercial">
+                    <img src="./assets/productImages/product1.jpg" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
+                    <p class="image-caption">Commercial Project</p>
+                </div>
+                <div class="relative bg-gray-800" data-category="spiritual">
+                    <img src="./assets/carousel/slide1.jpg" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
                     <p class="image-caption">Spiritual Project</p>
                 </div>
-                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="mixedUse">
-                    <img src="./assets/carousel/slide2.jpg" alt="Institutions" class="image w-full h-72 object-cover">
-                    <p class="image-caption">Mixed Use Project</p>
+                <div class="relative bg-gray-800" data-category="mixedUse">
+                    <img src="./assets/carousel/slide2.jpg" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
+                    <p class="image-caption">Mixed use Project</p>
                 </div>
-                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="hospitality">
-                    <img src="./assets/carousel/slide3.webp" alt="Institutions" class="image w-full h-72 object-cover">
+                <div class="relative bg-gray-800" data-category="hospitality">
+                    <img src="./assets/carousel/slide3.webp" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
                     <p class="image-caption">Hospitality Project</p>
                 </div>
-                <div class="bg-gray-800 h-84 flex items-center justify-center relative" data-category="academic">
-                    <img src="./assets/productImages/product1.jpg" alt="Institutions" class="image w-full h-72 object-cover">
+                <div class="relative bg-gray-800" data-category="academic">
+                    <img src="./assets/productImages/product1.jpg" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
                     <p class="image-caption">Academic Project</p>
                 </div>
             </div>
@@ -166,18 +212,6 @@
 
     <!-- JavaScript -->
     <script>
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            // Remove active class from all links
-            navLinks.forEach(item => item.classList.remove('active'));
-            
-            // Add active class to the clicked link
-            this.classList.add('active');
-        });
-        });
-
         const filterMenu = document.getElementById('filterMenu');
         const openFilters = document.getElementById('openFilters');
         const closeFilters = document.getElementById('closeFilters');
@@ -190,7 +224,18 @@
             filterMenu.classList.add('translate-x-full');
         });
 
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.remove('-translate-x-full');
+        });
+
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('-translate-x-full');
+        });
     </script>
-    <script src="projects.js"></script>
+    <script src="./projects.js"></script>
 </body>
 </html>

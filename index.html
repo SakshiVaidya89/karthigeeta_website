@@ -10,158 +10,89 @@
   <link href="./styles.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <style>
-    .hidden-menu {
-      display: none;
-    }
     @media (max-width: 768px) {
-      .carousel-caption {
-        bottom: 20% !important;
-        left: 5% !important;
-        right: 5% !important;
-        padding: 10px !important;
-      }
-
-      .carousel-caption h1 {
-        font-size: 1.25rem !important;
-      }
-
-      .carousel-caption h2 {
-        font-size: 1.75rem !important;
-      }
-
-      .carousel-caption p {
-        font-size: 0.875rem !important;
-      }
-    }
-
-    @media (max-width: 768px) {
-    .nav-link {
-      display: none;
-    }
-    
-    #navbar {
-      padding: 0.5rem;
-    }
-    
-    #navbar a.text-3xl {
-      margin-left: 1rem;
-      font-size: 1.5rem;
-    }
-    
-    #navbar img {
-      height: 3rem;
-    }
-  }
-  #mobile-menu {
-    transition: transform 0.3s ease-in-out;
-    transform: translateY(-100%);
-  }
-
-  #mobile-menu.show {
-    transform: translateY(0);
-  }
-
-  .hidden-menu {
-    display: none !important;
-  }
-  @media (max-width: 768px) {
-  #navbar {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-  }
-
-  #mobile-menu {
-    display: none;
-  }
-
-  #mobile-menu.active {
-    display: block;
-  }
-}
+            .navbar-title {
+                font-size: 1.5rem; /* Adjust font size for mobile devices */
+            }
+        }
   </style>
 </head>
 
 <body class="bg-gray-100 font-oswald">
-  <nav id="navbar" class="w-full fixed top-0 z-50 bg-[#3a5264] transition-all duration-300">
-    <div class="flex justify-between items-center px-4 py-2">
-      <!-- Logo Section -->
-      <a href="#" class="text-xl font-normal uppercase text-white tracking-wide flex items-center relative">
-        <img src="./assets/logo.png" alt="Logo" class="h-12 w-auto">
-        <span class="ml-2">Karthigeeta &<br>Associates</span>
-      </a>
-  
-      <!-- Mobile Menu Icon -->
-      <div class="md:hidden mr-6">
-        <svg id="mobile-menu-button" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </div>
+  <nav id="navbar" class="w-full fixed top-10 z-50 flex justify-between items-center border-t-2 border-b-2 border-white bg-transparent transition-all duration-300">
+    <!-- Logo Section -->
+    <a href="#" class="text-3xl font-normal uppercase text-white tracking-wide flex items-center ml-4 sm:ml-10 relative">
+        <img src="./assets/logo.png" alt="Logo" class="h-16 sm:h-16 w-auto">
+        <span class="ml-2 sm:ml-4 sm:text-sm navbar-title">Karthigeeta &<br>Associates</span>
+    </a>
 
-      <!-- Mobile Dropdown Menu -->
-      <div id="mobile-menu" class="hidden md:hidden absolute top-[5rem] right-0 w-full bg-[#0D3451] z-20">
-        <ul class="flex flex-col items-center gap-6 py-4">
-          <li><a href="/" class="text-white hover:text-gray-200">Home</a></li>
-          <li><a href="./aboutus_page.html" class="text-white hover:text-gray-200">About Us</a></li>
-          <li><a href="./faq.html" class="text-white hover:text-gray-200">FAQ</a></li>
-          <li><a href="./login.html" class="text-white hover:text-gray-200">Login</a></li>
-          <li><a href="./selection.html" class="text-white hover:text-gray-200">Sign Up</a></li>
-        </ul>
-      </div>
-  
-    <!-- Desktop Navigation -->
-    <div class="hidden md:flex items-center space-x-6 uppercase text-lg mr-40 font-normal">
-      <a href="#" class="nav-link px-4 py-2">Home</a>
-      <a href="#" class="nav-link px-4 py-2">About Us</a>
-      <a href="./projects.html" class="nav-link px-4 py-2">Projects</a>
-      <a href="#" class="nav-link px-4 py-2">Contact Us</a>
+    <!-- Navigation Links -->
+    <div class="hidden md:flex items-center space-x-4 sm:space-x-6 uppercase text-sm sm:text-lg mr-4 ml-4 sm:mr-10 font-normal">
+        <a href="./index.html" class="nav-link px-2 sm:px-4 py-2">Home</a>
+        <a href="#" class="nav-link px-2 sm:px-4 py-2">About Us</a>
+        <a href="./projects.html" class="nav-link px-2 sm:px-4 py-2">Projects</a>
+        <a href="#" class="nav-link px-2 sm:px-4 py-2">Contact Us</a>
     </div>
-  </nav>
 
+    <!-- Hamburger Menu -->
+    <div class="md:hidden mr-4">
+        <button id="hamburger" class="text-white">
+            ☰
+        </button>
+    </div>
+</nav>
 
-  
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 transform -translate-x-full transition-transform duration-300 z-50">
+    <button id="closeMobileMenu" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">
+        &#x2715;
+    </button>
+    <div class="flex flex-col items-center justify-center space-y-6 mt-20 text-xl uppercase">
+        <a href="./index.html" class="nav-link">Home</a>
+        <a href="#" class="nav-link">About Us</a>
+        <a href="./projects.html" class="nav-link">Projects</a>
+        <a href="#" class="nav-link">Contact Us</a>
+    </div>
+</div>
+
   <!-- Carousel Section -->
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="./assets/carousel/slide1.jpg" class="d-block w-100 h-screen object-cover" alt="First slide">
-        <div class="carousel-caption d-md-block text-left">
-          <h1 class="text-5xl md:text-3xl font-normal">Karthigeeta & Associates</h1>
-          <h2 class="text-8xl md:text-7xl font-bold">architects</h2>
-          <br>
-          <p class="text-lg md:text-sm font-sans mt-2">Living in a fast paced world it is essential to evolve our practice with the growing new technologies.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="./assets/carousel/slide2.jpg" class="d-block w-100 h-screen object-cover" alt="Second slide">
-        <div class="carousel-caption d-block text-left">
-          <h1 class="text-5xl font-normal">Karthigeeta & Associates</h1>
-          <h2 class="text-7xl font-bold">interior designers</h2>
-          <br>
-          <p class="text-lg font-sans">Living in a fast paced world it is essential to evolve our practice with the growing new technologies and its new materials, its expression.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="./assets/carousel/slide3.webp" class="d-block w-100 h-screen object-cover" alt="Second slide">
-        <div class="carousel-caption d-block text-left">
-          <h1 class="text-5xl font-normal">We love to explore and create</h1>
-          <h2 class="text-7xl font-bold">contemporary structures</h2>
-          <br>
-          <p class="text-lg font-sans">Living in a fast paced world it is essential to evolve our practice with the growing new technologies and its new materials, its expression.</p>
-        </div>
+<div id="carouselExampleCaptions" class="carousel slide mt-0 lg:mt-0" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="./assets/carousel/slide1.jpg" class="d-block w-full h-screen object-cover" alt="First slide">
+      <div class="carousel-caption d-md-block text-left">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white">Karthigeeta & Associates</h1>
+        <h2 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white">architects</h2>
+        <p class="text-base sm:text-lg md:text-xl font-sans mt-2 text-white">Living in a fast-paced world, it is essential to evolve our practice with the growing new technologies.</p>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    <div class="carousel-item">
+      <img src="./assets/carousel/slide2.jpg" class="d-block w-full h-screen object-cover" alt="Second slide">
+      <div class="carousel-caption d-md-block text-left">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white">Karthigeeta & Associates</h1>
+        <h2 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white">architects</h2>
+        <p class="text-base sm:text-lg md:text-xl font-sans mt-2 text-white">Living in a fast-paced world, it is essential to evolve our practice with the growing new technologies.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="./assets/carousel/slide3.webp" class="d-block w-full h-screen object-cover" alt="Third slide">
+      <div class="carousel-caption d-md-block text-left">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white">Karthigeeta & Associates</h1>
+        <h2 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white">architects</h2>
+        <p class="text-base sm:text-lg md:text-xl font-sans mt-2 text-white">Living in a fast-paced world, it is essential to evolve our practice with the growing new technologies.</p>
+      </div>
+    </div>
   </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
 
   <section class="text-center py-6 md:py-10 px-4">
     <h2 class="text-base md:text-lg text-gray-700 tracking-widest">WELCOME</h2>
@@ -200,12 +131,12 @@
 
   <!-- Project Grid -->
   <section class="container mx-auto px-4 mb-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       
       <!-- Project Card 1 -->
       <div class="bg-white shadow-lg rounded overflow-hidden">
         <img src="./assets/productImages/product1.jpg" alt="Residential" class="w-full h-48 object-cover">
-        <div class="p-4 md:p-4">
+        <div class="p-3 md:p-4">
           <h3 class="font-bold text-base md:text-lg text-gray-800">Residential</h3>
           <a href="#" class="inline-block mt-2 bg-yellow-400 text-black px-3 py-1 text-sm md:text-base rounded hover:bg-yellow-500">
             ➤ Details
@@ -226,9 +157,9 @@
 
       <!-- Project Card 3 -->
       <div class="bg-white shadow-lg rounded overflow-hidden">
-        <img src="./assets/productImages/product3.jpg" alt="Multi-Family Residential" class="w-full h-48 object-cover">
+        <img src="./assets/productImages/product3.jpg" alt="Corporate Headquarters" class="w-full h-48 object-cover">
         <div class="p-4 md:p-4">
-          <h3 class="font-bold text-base md:text-lg text-gray-800">Multi-Family Residential</h3>
+          <h3 class="font-bold text-base md:text-lg text-gray-800">Corporate Headquarters</h3>
           <a href="#" class="inline-block mt-2 bg-yellow-400 text-black px-3 py-1 text-sm md:text-base rounded hover:bg-yellow-500">
             ➤ Details
           </a>
@@ -237,9 +168,9 @@
 
       <!-- Project Card 4 -->
       <div class="bg-white shadow-lg rounded overflow-hidden">
-        <img src="./assets/productImages/product4.jpg" alt="Institutions" class="w-full h-48 object-cover">
+        <img src="./assets/productImages/product4.jpg" alt="Corporate Headquarters" class="w-full h-48 object-cover">
         <div class="p-4 md:p-4">
-          <h3 class="font-bold text-base md:text-lg text-gray-800">Institutions</h3>
+          <h3 class="font-bold text-base md:text-lg text-gray-800">Corporate Headquarters</h3>
           <a href="#" class="inline-block mt-2 bg-yellow-400 text-black px-3 py-1 text-sm md:text-base rounded hover:bg-yellow-500">
             ➤ Details
           </a>
@@ -248,9 +179,9 @@
 
       <!-- Project Card 5 -->
       <div class="bg-white shadow-lg rounded overflow-hidden">
-        <img src="./assets/productImages/product5.jpg" alt="Commercial Complexes" class="w-full h-48 object-cover">
+        <img src="./assets/productImages/product5.jpg" alt="Corporate Headquarters" class="w-full h-48 object-cover">
         <div class="p-4 md:p-4">
-          <h3 class="font-bold text-base md:text-lg text-gray-800">Commercial Complexes</h3>
+          <h3 class="font-bold text-base md:text-lg text-gray-800">Corporate Headquarters</h3>
           <a href="#" class="inline-block mt-2 bg-yellow-400 text-black px-3 py-1 text-sm md:text-base rounded hover:bg-yellow-500">
             ➤ Details
           </a>
@@ -259,9 +190,9 @@
 
       <!-- Project Card 6 -->
       <div class="bg-white shadow-lg rounded overflow-hidden">
-        <img src="./assets/productImages/product6.jpg" alt="Factories" class="w-full h-48 object-cover">
+        <img src="./assets/productImages/product6.jpg" alt="Corporate Headquarters" class="w-full h-48 object-cover">
         <div class="p-4 md:p-4">
-          <h3 class="font-bold text-base md:text-lg text-gray-800">Factories</h3>
+          <h3 class="font-bold text-base md:text-lg text-gray-800">Corporate Headquarters</h3>
           <a href="#" class="inline-block mt-2 bg-yellow-400 text-black px-3 py-1 text-sm md:text-base rounded hover:bg-yellow-500">
             ➤ Details
           </a>
@@ -270,9 +201,9 @@
 
       <!-- Project Card 7 -->
       <div class="bg-white shadow-lg rounded overflow-hidden">
-        <img src="./assets/productImages/product7.jpg" alt="Residential" class="w-full h-48 object-cover">
+        <img src="./assets/productImages/product7.jpg" alt="Corporate Headquarters" class="w-full h-48 object-cover">
         <div class="p-4 md:p-4">
-          <h3 class="font-bold text-base md:text-lg text-gray-800">Residential</h3>
+          <h3 class="font-bold text-base md:text-lg text-gray-800">Corporate Headquarters</h3>
           <a href="#" class="inline-block mt-2 bg-yellow-400 text-black px-3 py-1 text-sm md:text-base rounded hover:bg-yellow-500">
             ➤ Details
           </a>
@@ -281,9 +212,9 @@
 
       <!-- Project Card 8 -->
       <div class="bg-white shadow-lg rounded overflow-hidden">
-        <img src="./assets/productImages/product8.jpg" alt="Apartments" class="w-full h-48 object-cover">
+        <img src="./assets/productImages/product8.jpg" alt="Corporate Headquarters" class="w-full h-48 object-cover">
         <div class="p-4 md:p-4">
-          <h3 class="font-bold text-base md:text-lg text-gray-800">Apartments</h3>
+          <h3 class="font-bold text-base md:text-lg text-gray-800">Corporate Headquarters</h3>
           <a href="#" class="inline-block mt-2 bg-yellow-400 text-black px-3 py-1 text-sm md:text-base rounded hover:bg-yellow-500">
             ➤ Details
           </a>
@@ -295,50 +226,50 @@
   <!-- Contact Section -->
   <footer id="contact" class="bg-gray-800 text-white py-4 md:py-6 px-4">
     <div class="container mx-auto text-center">
-      <p class="text-sm md:text-base">&copy; 2024 Karthigeeta & Associates. All rights reserved.</p>
-      <p class="text-sm md:text-base">Contact: info@karthigeetaassociates.com | Phone: 0422-2454082</p>
+      <p class="text-xs md:text-base">&copy; 2024 Karthigeeta & Associates. All rights reserved.</p>
+      <p class="text-xs md:text-base">Contact: info@karthigeetaassociates.com | Phone: 0422-2454082</p>
     </div>
   </footer>
 
   
   <script>
-    const navLinks = document.querySelectorAll('.nav-link');
+    document.addEventListener('DOMContentLoaded', function () {
+    const navbar = document.getElementById('navbar');
+    const mobileMenu = document.getElementById('mobileMenu'); // Corrected ID
+    const hamburger = document.getElementById('hamburger');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
 
-    navLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        // Remove active class from all links
-        navLinks.forEach(item => item.classList.remove('active'));
-        
-        // Add active class to the clicked link
-        this.classList.add('active');
-      });
+    // Hamburger icon to open mobile menu
+    hamburger.addEventListener('click', () => {
+        mobileMenu.classList.remove('-translate-x-full');
     });
-    window.addEventListener('scroll', function() {
-      const navbar = document.getElementById('navbar');
-      if (window.pageYOffset > 0) {
-        navbar.classList.add('bg-[#3a5264]');
-        navbar.classList.remove('bg-transparent');
-        navbar.classList.add('shadow-md');
-        navbar.classList.add('top-0');
-        navbar.classList.remove('top-10');
-      } else {
-        navbar.classList.remove('bg-[#3a5264]');
-        navbar.classList.add('bg-transparent');
-        navbar.classList.remove('shadow-md');
-        navbar.classList.add('top-10');
-        navbar.classList.remove('top-0');
-      }
-    });
-    
-    const mobileMenuButton = document.getElementById("mobile-menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
 
-    // Toggle mobile menu visibility
-    mobileMenuButton.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
+    // Close button for the mobile menu
+    closeMobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.add('-translate-x-full');
     });
+
+    // Handle scroll behavior
+    function handleScroll() {
+        if (window.pageYOffset > 20) {
+            navbar.classList.add('bg-[#3a5264]', 'shadow-md');
+            navbar.classList.remove('bg-transparent');
+            navbar.classList.add('top-0');
+            navbar.classList.remove('top-10');
+        } else {
+            navbar.classList.remove('bg-[#3a5264]', 'shadow-md');
+            navbar.classList.add('bg-transparent');
+            navbar.classList.remove('top-0');
+            navbar.classList.add('top-10');
+        }
+    }
+
+    // Optional: Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+});
 
   </script>
+  
   <script src="scripts.js"></script>
 </body>
 </html>

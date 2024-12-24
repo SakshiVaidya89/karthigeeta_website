@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Residential Properties</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      align-items: flex-start;
+      margin-top: 120px;
+    }
+
+    .info {
+      flex: 1;
+      padding: 20px;
+      max-width: 50%;
+    }
+
+    .info h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .info p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .info .facts {
+      margin-top: 20px;
+    }
+
+    .carousel {
+      flex: 1;
+      padding-left: 20px;
+      max-width: 60%;
+    }
+
+    .owl-carousel .item {
+      width: 100%;
+      height: 500px;
+      background: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .owl-carousel .item img {
+      width: 120%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .container {
+        margin-top: 100px;
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      .info {
+        max-width: 100%;
+        padding: 15px;
+        order: 1; /* Places info section first */
+        padding-top: 20px;
+      }
+
+      .carousel {
+        max-width: 100%;
+        padding-left: 0;
+        margin-top: 20px;
+        order: 2; /* Places carousel section second */
+      }
+
+      .owl-carousel .item {
+        height: 300px; /* Smaller height for mobile */
+      }
+
+      /* nav {
+        padding: 10px;
+      }
+
+      nav a.text-3xl {
+        margin-left: 10px;
+      }
+
+      nav .flex.items-center {
+        margin-right: 10px;
+      }
+
+      /* Adjust navigation spacing */
+      /* nav .ml-40 {
+        margin-left: 10px;
+      }
+
+      nav .mr-40 {
+        margin-right: 10px;
+      }  */
+
+      /* Stack navigation items on very small screens
+      @media (max-width: 640px) {
+        .container {
+          margin-top: 140px;
+        }
+
+
+        nav {
+          flex-direction: column;
+          padding: 10px 0;
+        }
+
+        nav .flex.items-center {
+          margin: 10px 0;
+        }
+      } */
+    }
+
+    nav {
+      background-color: #3a5264;
+    }
+
+    .owl-carousel {
+      margin: 0 auto;
+    }
+
+    .owl-nav {
+      position: absolute;
+      top: 50%;
+      width: 110%;
+      left: -5%;
+      transform: translateY(-50%);
+    }
+
+    .owl-nav button {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: rgba(58, 82, 100, 0.8) !important;
+      border-radius: 50% !important;
+    }
+
+    .owl-nav button.owl-prev {
+      left: 0;
+    }
+
+    .owl-nav button.owl-next {
+      right: 0;
+    }
+
+    .owl-nav span {
+      color: #fff;
+      font-size: 2rem;
+      line-height: 0.5;
+    }
+
+    .owl-dots {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .owl-dots .owl-dot span {
+      width: 12px;
+      height: 12px;
+      background: #fff;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 5px;
+    }
+
+    .owl-dots .owl-dot.active span {
+      background: #3a5264;
+    }
+
+    .owl-item {
+      padding: 0 15px;
+    }
+
+    /* Additional responsive adjustments for navbar */
+    @media (max-width: 768px) {
+      .navbar-title {
+                font-size: 1.5rem; /* Adjust font size for mobile devices */
+            }
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-oswald">
+  <nav id="navbar" class="w-full fixed top-0 z-50 flex justify-between items-center border-t-2 border-b-2 border-white bg-[#3a5264] transition-all duration-300">
+    <!-- Logo Section -->
+    <a href="#" class="text-3xl font-normal uppercase text-white tracking-wide flex items-center ml-4 sm:ml-10 relative">
+      <img src="./assets/logo.png" alt="Logo" class="h-16 sm:h-16 w-auto">
+      <span class="ml-2 sm:ml-4 sm:text-sm navbar-title">Karthigeeta &<br>Associates</span>
+    </a>
+
+    <!-- Navigation Links -->
+    <div class="hidden md:flex items-center space-x-4 sm:space-x-6 uppercase text-sm sm:text-lg mr-4 ml-4 sm:mr-10 font-normal">
+      <a href="./index.html" class="nav-link px-2 sm:px-4 py-2">Home</a>
+      <a href="#" class="nav-link px-2 sm:px-4 py-2">About Us</a>
+      <a href="./projects.html" class="nav-link px-2 sm:px-4 py-2">Projects</a>
+      <a href="#" class="nav-link px-2 sm:px-4 py-2">Contact Us</a>
+    </div>
+
+    <!-- Hamburger Menu -->
+    <div class="md:hidden mr-4">
+        <button id="hamburger" class="text-white">
+            ☰
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 transform -translate-x-full transition-transform duration-300 z-50">
+    <button id="closeMobileMenu" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">
+        &#x2715;
+    </button>
+    <div class="flex flex-col items-center justify-center space-y-6 mt-20 text-xl uppercase">
+        <a href="./index.html" class="nav-link">Home</a>
+        <a href="#" class="nav-link">About Us</a>
+        <a href="./projects.html" class="nav-link">Projects</a>
+        <a href="#" class="nav-link">Contact Us</a>
+    </div>
+</div>
+
+  <div class="container hind-madurai-regular">
+    <div class="info">
+      <h1 class="font-lora">Dining Pavilion</h1>
+      <p class="hind-madurai-regular">
+        The Dining Pavilion, an extension to an indoor cafeteria at K.J. Somaiya Institute in Mumbai, serves as a link between existing buildings. Situated amidst trees, its platform design seamlessly connects the structures under a translucent roof.
+      </p>
+      <p>
+        Multi-wall polycarbonate roofing, suspended from beams, creates a continuous plane above, casting shadows from foliage below.
+      </p>
+      <div class="facts">
+        <h3>Project Facts</h3>
+        <p>Details about the project go here.</p>
+      </div>
+    </div>
+    <div class="carousel">
+      <div id="carousel" class="owl-carousel owl-theme">
+        <div class="item"><img src="./assets/carousel/slide1.jpg" alt="Image 1"></div>
+        <div class="item"><img src="./assets/carousel/slide2.jpg" alt="Image 2"></div>
+        <div class="item"><img src="./assets/carousel/slide3.webp" alt="Image 3"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $("#carousel").owlCarousel({
+        center: true,
+        items: 1,
+        loop: true,
+        margin: 30,
+        stagePadding: 100,
+        navText: ['<span>&#8249;</span>', '<span>&#8250;</span>'],
+        responsive: {
+          0: { 
+            items: 1,
+            stagePadding: 20,
+            margin: 10
+          },
+          768: { 
+            items: 1,
+            stagePadding: 40,
+            margin: 20
+          },
+          1200: { 
+            items: 1,
+            stagePadding: 100,
+            margin: 30
+          }
+        },
+        mouseDrag: true,
+        touchDrag: true,
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const navbar = document.getElementById('navbar');
+    const mobileMenu = document.getElementById('mobileMenu'); // Corrected ID
+    const hamburger = document.getElementById('hamburger');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+    // Hamburger icon to open mobile menu
+    hamburger.addEventListener('click', () => {
+        mobileMenu.classList.remove('-translate-x-full');
+    });
+
+    // Close button for the mobile menu
+    closeMobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.add('-translate-x-full');
+    });
+});
+
+  </script>
+</body>
+</html>
