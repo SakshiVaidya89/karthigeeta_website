@@ -15,15 +15,21 @@
                 font-size: 1.5rem; /* Adjust font size for mobile devices */
             }
         }
+        @media (max-width: 1024px) {
+            .navbar-title {
+                font-size: 1.5rem; /* Adjust font size for mobile devices */
+            }
+        }
   </style>
+  
 </head>
 
 <body class="bg-gray-100 font-oswald">
   <nav id="navbar" class="w-full fixed top-10 z-50 flex justify-between items-center border-t-2 border-b-2 border-white bg-transparent transition-all duration-300">
     <!-- Logo Section -->
-    <a href="#" class="text-3xl font-normal uppercase text-white tracking-wide flex items-center ml-4 sm:ml-10 relative">
+    <a href="./index.html" class="text-3xl font-normal uppercase text-white tracking-wide flex items-center ml-4 sm:ml-10 relative">
         <img src="./assets/logo.png" alt="Logo" class="h-16 sm:h-16 w-auto">
-        <span class="ml-2 sm:ml-4 sm:text-sm navbar-title">Karthigeeta &<br>Associates</span>
+        <span class="ml-2 navbar-title text-2xl">Karthigeeta &<br>Associates</span>
     </a>
 
     <!-- Navigation Links -->
