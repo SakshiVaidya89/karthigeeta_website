@@ -13,16 +13,43 @@
             font-size: 1.2rem;
         }
 
-        .image-caption {
+        .image-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background for better readability */
             color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
             text-align: center;
-            padding: 0.5rem;
+            margin-left: 2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .relative:hover .image-overlay {
+            opacity: 1; /* Show text when hovering over the image */
+        }
+
+        .image-caption {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .image-overlay p {
+            margin-bottom: 0.5rem; /* Add spacing between p and h3 */
+        }
+
+        .image-overlay h3 {
             font-size: 1.2rem;
-            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .image-height {
+            height: 30rem;
         }
 
         /* Filter menu scrollability */
@@ -179,41 +206,206 @@
             </section>
 
             <!-- Responsive Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="image-height grid grid-cols-1 sm:grid-cols-2">
                 <!-- Example Gallery Item -->
-                <div class="relative bg-gray-800" data-category="residential">
+                <div class="relative bg-gray-800" data-category="academic">
                     <a href="./resident.html">
-                        <img src="./assets/carousel/slide1.jpg" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
-                        <p class="image-caption">Residential Project</p>
+                        <img src="./assets/Advaith Thought Academy/185289756_172409078218729_5944811567481093321_n.jpg" alt="Residential Project" class="image-height w-full object-cover" >
+                        <div class="image-overlay">
+                            <p class="image-caption">Advaith Thought Academy</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="interior">
-                    <img src="./assets/carousel/slide2.jpg" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
-                    <p class="image-caption">Interior Project</p>
+                
+                <div class="relative bg-gray-800" data-category="residential">
+                    <a href="./resident.html">
+                        <img src="./assets/Arunraj Residence/Image3-enhanced.png" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Arunraj Residence</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="cultural">
-                    <img src="./assets/carousel/slide3.webp" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
-                    <p class="image-caption">Cultural Project</p>
+                <div class="relative bg-gray-800" data-category="residential">
+                    <a href="./resident.html">
+                        <img src="./assets/Boopathy Residence/1 (2).jpg" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Boopathy Residence</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
                 </div>
                 <div class="relative bg-gray-800" data-category="commercial">
-                    <img src="./assets/productImages/product1.jpg" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
-                    <p class="image-caption">Commercial Project</p>
+                    <a href="./resident.html">
+                        <img src="./assets/Canara Bank CBE/20190609_142207-ed.png" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Canar Bank CBE</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="spiritual">
-                    <img src="./assets/carousel/slide1.jpg" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
-                    <p class="image-caption">Spiritual Project</p>
+                <div class="relative bg-gray-800" data-category="residential">
+                    <a href="./resident.html">
+                        <img src="./assets/Club B1 BLR/Entry_0.png" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Club B1 BLR</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="mixedUse">
-                    <img src="./assets/carousel/slide2.jpg" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
-                    <p class="image-caption">Mixed use Project</p>
-                </div>
-                <div class="relative bg-gray-800" data-category="hospitality">
-                    <img src="./assets/carousel/slide3.webp" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
-                    <p class="image-caption">Hospitality Project</p>
+                <div class="relative bg-gray-800" data-category="workplace">
+                    <a href="./resident.html">
+                        <img src="./assets/CODISSIA CBE/FINAL.png" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Codissia CBE</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
                 </div>
                 <div class="relative bg-gray-800" data-category="academic">
-                    <img src="./assets/productImages/product1.jpg" alt="Residential Project" class="w-full h-56 sm:h-72 object-cover">
-                    <p class="image-caption">Academic Project</p>
+                    <a href="./resident.html">
+                        <img src="./assets/DJ Academy/DJ academy 1.jpg" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">DJ Academy</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="landscape">
+                    <a href="./resident.html">
+                        <img src="./assets/HEAL/2.png" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Heal</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="workplace">
+                    <a href="./resident.html">
+                        <img src="./assets/Hospice CBE/Picture14.png" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Hospice CBE</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="spiritual">
+                    <a href="./resident.html">
+                        <img src="./assets/Jaferullah/2023-12-05_Photos2.png" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Jaferullah</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="residential">
+                    <a href="./resident.html">
+                        <img src="./assets/Karur Residence/image10.jpg" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Karur Residence</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="landscape">
+                    <a href="./resident.html">
+                        <img src="./assets/Kavundampalayam Urban Development/CDC_129879_1.jpg" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Kavundampalayam Urban Development</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="residential">
+                    <a href="./resident.html">
+                        <img src="./assets/Kumarasamy Residence/Int-5.jpg" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Kumaraswamy Residence</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="residential">
+                    <a href="./resident.html">
+                        <img src="./assets/Murugan Residency/Image1.png" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Murugan Residence</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="residential">
+                    <a href="./resident.html">
+                        <img src="./assets/Prabhu Residence/Image1.png" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Prabhu Residence</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="residential">
+                    <a href="./resident.html">
+                        <img src="./assets/Ramachandra Residence/Image4.png" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Ramachandra Residence</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="workplace">
+                    <a href="./resident.html">
+                        <img src="./assets/Reflect Dermatology Care/1.png" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Reflect Dermatology Care</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="workplace">
+                    <a href="./resident.html">
+                        <img src="./assets/Satara Health Care/Image15.png" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Satara Health Care</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="residential">
+                    <a href="./resident.html">
+                        <img src="./assets/Skanda Mahal/IMG_20211117_110048.jpg" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Skanda Mahal</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="workplace">
+                    <a href="./resident.html">
+                        <img src="./assets/Textiles Karur/image30.jpg" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Textiles Karur</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="residential">
+                    <a href="./resident.html">
+                        <img src="./assets/The Grape Escape/Outside.png" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">The Grape Escape</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="relative bg-gray-800" data-category="residential">
+                    <a href="./resident.html">
+                        <img src="./assets/Thomas Residency/Screenshot 2022-05-14 105828.jpg" alt="Residential Project" class="image-height w-full object-cover">
+                        <div class="image-overlay">
+                            <p class="image-caption">Thomas Residence</p>
+                            <h3 class="image-caption">Mumbai</h3>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
