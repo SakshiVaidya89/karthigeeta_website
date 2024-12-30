@@ -7,32 +7,159 @@
     <link href="./styles.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom styles for better responsiveness */
+
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .shadow-md {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
         .filter {
             top: 6rem;
             font-size: 1.2rem;
         }
 
-        .image-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
+        .masonry-grid {
+        columns: 2;
+        column-gap: 1rem;
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .masonry-item {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        display: inline-block; /* Important for proper break-inside behavior */
+    }
+
+    .masonry-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .masonry-item:hover img {
+        transform: scale(1.05);
+    }
+
+    .image-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .masonry-item:hover .image-overlay {
+        opacity: 1;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .masonry-grid {
+            columns: 1;
+        }
+    }
+
+    /* Optimize image loading */
+    .masonry-item img {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+
+    /* Ensure proper text alignment in overlay */
+    .image-overlay .text-center {
+        width: 100%;
+        padding: 1rem;
+    }
+
+        @media (max-width: 768px) {
+            .masonry-item {
+                flex: 0 0 calc(100% - 16px);
+            }
+        }
+
+        #filterMenu {
+            background-color: black;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .filter {
+            position: fixed;
+            top: 6rem;
+            right: 1rem;
+            z-index: 50;
+        }
+
+        .project-grid {
+            column-count: 2;
+            column-gap: 2rem;
+            padding: 0 2rem;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .project-item {
+            break-inside: avoid;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+
+        @media (max-width: 768px) {
+            .project-grid {
+                column-count: 1;
+            }
+        }
+
+        /* Project item styles */
+        .project-item img {
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background for better readability */
-            color: white;
+            height: auto;
+            display: block;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Overlay styles */
+        .image-overlay {
+            background: rgba(0, 0, 0, 0.6);
             opacity: 0;
-            transition: opacity 0.3s ease;
-            text-align: center;
-            margin-left: 2px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .project-item:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .image-caption {
+            transform: translateY(20px);
+            transition: transform 0.5s ease;
+        }
+
+        .project-item:hover .image-caption {
+            transform: translateY(0);
         }
 
         .relative:hover .image-overlay {
-            opacity: 1; /* Show text when hovering over the image */
+            opacity: 1; 
         }
 
         .image-caption {
@@ -41,15 +168,20 @@
         }
 
         .image-overlay p {
-            margin-bottom: 0.5rem; /* Add spacing between p and h3 */
+            margin-bottom: 0.5rem; 
         }
 
         .image-overlay h3 {
             font-size: 1.2rem;
         }
-        
-        .image-height {
-            height: 30rem;
+
+        img {
+            display: block;
+            background: none; /* Ensure no background is added */
+        }
+
+        .grid > div {
+            background: transparent; /* Override the gray background */
         }
 
         /* Filter menu scrollability */
@@ -92,47 +224,47 @@
     </style>
 </head>
 <body class="bg-gray-50 text-white font-oswald">
-    <!-- Navigation Bar -->
-    <nav id="navbar" class="w-full fixed top-0 z-50 flex justify-between items-center border-t-2 border-b-2 border-white bg-[#3a5264] transition-all duration-300">
+    
+
+    <nav class="w-full fixed top-0 z-50 flex justify-between items-center bg-white px-6 py-4 shadow-md">
         <!-- Logo Section -->
-        <a href="#" class="text-3xl font-normal uppercase text-white tracking-wide flex items-center ml-4 sm:ml-10 relative">
-          <img src="./assets/logo.png" alt="Logo" class="h-20 sm:h-20 w-auto">
-          <span class="ml-2 text-2xl navbar-title">Karthigeeta &<br>Associates</span>
+        <a href="#" class="text-2xl font-bold text-black tracking-wide">
+          Karthigeeta & <br>Associates
         </a>
-
+      
         <!-- Navigation Links -->
-        <div class="hidden md:flex items-center space-x-4 sm:space-x-6 uppercase text-sm sm:text-lg mr-4 ml-4 sm:mr-10 font-normal">
-          <a href="./index.html" class="nav-link px-2 sm:px-4 py-2">Home</a>
-          <a href="#" class="nav-link px-2 sm:px-4 py-2">About Us</a>
-          <a href="./projects.html" class="nav-link px-2 sm:px-4 py-2">Projects</a>
-          <a href="#" class="nav-link px-2 sm:px-4 py-2">Contact Us</a>
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="#" class="px-4 py-2 rounded-full text-md font-medium text-gray-600 hover:bg-gray-200 hover:text-black transition">
+            Projects
+          </a>
+          <a href="#" class="px-4 py-2 rounded-full text-md font-medium text-gray-600 hover:bg-gray-200 hover:text-black transition">
+            Services
+          </a>
+          <a href="#" class="px-4 py-2 rounded-full text-md font-medium text-gray-600 hover:bg-gray-200 hover:text-black transition">
+            Research
+          </a>
+          <a href="#" class="px-4 py-2 rounded-full text-md font-medium text-gray-600 hover:bg-gray-200 hover:text-black transition">
+            Culture
+          </a>
+          <a href="#" class="px-4 py-2 rounded-full text-md font-medium text-gray-600 hover:bg-gray-200 hover:text-black transition">
+            Careers
+          </a>
+          <a href="#" class="px-4 py-2 rounded-full text-md font-medium text-gray-600 hover:bg-gray-200 hover:text-black transition">
+            Blog
+          </a>
         </div>
-
-        <!-- Hamburger Menu -->
-        <div class="md:hidden mr-4">
-            <button id="hamburger" class="text-white">
-                ☰
-            </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 transform -translate-x-full transition-transform duration-300 z-50">
-        <button id="closeMobileMenu" class="absolute top-4 right-4 text-black hover:text-gray-400 text-2xl">
-            &#x2715;
-        </button>
-        <div class="flex flex-col items-center justify-center space-y-6 mt-20 text-xl uppercase">
-            <a href="./index.html" class="nav-link">Home</a>
-            <a href="#" class="nav-link">About Us</a>
-            <a href="./projects.html" class="nav-link">Projects</a>
-            <a href="#" class="nav-link">Contact Us</a>
-        </div>
-    </div>
+      
+        <!-- Call-to-Action Button -->
+        <a href="#" class="px-6 py-2 bg-black text-white rounded-full text-sm font-medium flex items-center space-x-2 hover:bg-gray-800 transition">
+          <span>Let’s Talk!</span>
+          <span class="text-lg">→</span>
+        </a>
+      </nav>
 
     <!-- Wrapper -->
     <div class="relative">
         <!-- Toggle Filters Button -->
-        <button id="openFilters" class="filter fixed right-4 bg-gray-900 hover:bg-gray-600 text-white py-2 px-4 rounded z-100">
+        <button id="openFilters" class="filter fixed mt-8 right-4 bg-gray-900 hover:bg-gray-600 text-white py-2 px-4 rounded z-100">
             Filters
         </button>
 
@@ -193,215 +325,241 @@
 
         <!-- Gallery Section -->
         <div class="px-4 sm:px-8 md:px-20 py-12 mt-10">
-            <section class="text-center py-10 text-black">
-                <h2 class="text-sm sm:text-lg tracking-widest mt-20">OUR WORK</h2>
-                <h1 class="text-2xl sm:text-4xl font-bold text-black mt-2">RECENT PROJECTS</h1>
+            <section class="py-10 text-black">
+                <h2 class="text-sm sm:text-lg tracking-widest mt-20 text-center">OUR WORK</h2>
+                <h1 class="text-2xl sm:text-4xl font-bold text-black mt-2 text-center">RECENT PROJECTS</h1>
                 <br>
-                <div class="flex justify-center mt-2">
-                    <div class="bg-yellow-500 h-0.5 w-24 sm:w-40"></div>
+                <div class="flex mt-2 flex justify-center items-center">
+                    <div class="bg-yellow-500 h-0.5 w-24 sm:w-40 flex justify-center items-center"></div>
                 </div>
-                <p class="mt-4 px-2 sm:px-4 max-w-3xl mx-auto font-sans text-sm sm:text-base">
-                    We had the privilege of handling a range of projects. Each project is of a specific nature, demanding a particular character, unique to its own geographic location.
-                </p>
+                <section class="py-12 font-poppins">
+                    <div class="max-w-6xl mx-auto grid grid-cols-3 md:grid-cols-3 gap-8 text-center">
+                            <div class="flex flex-col items-center">
+                                <h1 class="font-bold text-6xl text-black">+300</h1>
+                                <h3 class="text-md">Completed Projects</h3>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <h1 class="font-bold text-6xl text-black">+40M</h1>
+                                <h3 class="text-md">SQ FT Built</h3>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <h1 class="font-bold text-6xl text-black">+10</h1>
+                                <h3 class="text-md">Years of experience in the US</h3>
+                            </div>
+                    </div>
+                </section>
+                <div class="flex mt-2 flex justify-center items-center">
+                    <div class="bg-yellow-500 h-0.5 w-24 sm:w-40 flex justify-center items-center"></div>
+                </div>
+                <br>
+                <div class="flex justify-center items-center">
+                    <p class="mt-4 max-w-3xl font-sans text-sm sm:text-base text-center flex justify-center items-center">
+                        We had the privilege of handling a range of projects. Each project is of a specific nature, demanding a particular character, unique to its own geographic location.
+                    </p>
+                </div>
             </section>
 
             <!-- Responsive Grid -->
-            <div class="image-height grid grid-cols-1 sm:grid-cols-2">
+            <div class="masonry-grid max-w-[1800px] mx-auto">
                 <!-- Example Gallery Item -->
-                <div class="relative bg-gray-800" data-category="academic">
-                    <a href="./resident.html">
-                        <img src="./assets/Advaith Thought Academy/185289756_172409078218729_5944811567481093321_n.jpg" alt="Residential Project" class="image-height w-full object-cover" >
-                        <div class="image-overlay">
-                            <p class="image-caption">Advaith Thought Academy</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                <div class="masonry-item" data-category="academic">
+                    <img src="./assets/Advaith Thought Academy/185289756_172409078218729_5944811567481093321_n.jpg" 
+                         alt="Advaith Thought Academy">
+                    <div class="image-overlay">
+                        <div class="text-center text-white">
+                            <h3 class="text-2xl font-semibold mb-2">Advaith Thought Academy</h3>
+                            <p class="text-lg">Mumbai</p>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 
-                <div class="relative bg-gray-800" data-category="residential">
+                <div class="masonry-item" data-category="residential">
                     <a href="./resident.html">
-                        <img src="./assets/Arunraj Residence/Image3-enhanced.png" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
-                            <p class="image-caption">Arunraj Residence</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                    <img src="./assets/Arunraj Residence/Image3-enhanced.png" 
+                         alt="Arunraj Residence">
+                    <div class="image-overlay absolute inset-0 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <h3 class="text-2xl font-semibold mb-2">Arunraj Residence</h3>
+                            <p class="text-lg">Mumbai</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="masonry-item" data-category="residential">
+                    <a href="./resident.html">
+                        <img src="./assets/Boopathy Residence/1 (2).jpg" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
+                            <p class="text-2xl font-semibold mb-2">Boopathy Residence</p>
+                            <h3 class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="residential">
+                <div class="masonry-item" data-category="commercial">
                     <a href="./resident.html">
-                        <img src="./assets/Boopathy Residence/1 (2).jpg" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
-                            <p class="image-caption">Boopathy Residence</p>
-                            <h3 class="image-caption">Mumbai</h3>
-                        </div>
-                    </a>
-                </div>
-                <div class="relative bg-gray-800" data-category="commercial">
-                    <a href="./resident.html">
-                        <img src="./assets/Canara Bank CBE/20190609_142207-ed.png" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Canara Bank CBE/20190609_142207-ed.png" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Canar Bank CBE</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="residential">
+                <div class="masonry-item" data-category="residential">
                     <a href="./resident.html">
-                        <img src="./assets/Club B1 BLR/Entry_0.png" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Club B1 BLR/Entry_0.png" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Club B1 BLR</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="workplace">
+                <div class="masonry-item" data-category="workplace">
                     <a href="./resident.html">
-                        <img src="./assets/CODISSIA CBE/FINAL.png" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/CODISSIA CBE/FINAL.png" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Codissia CBE</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="academic">
+                <div class="masonry-item" data-category="academic">
                     <a href="./resident.html">
-                        <img src="./assets/DJ Academy/DJ academy 1.jpg" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/DJ Academy/DJ academy 1.jpg" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">DJ Academy</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="landscape">
+                <div class="masonry-item" data-category="landscape">
                     <a href="./resident.html">
-                        <img src="./assets/HEAL/2.png" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/HEAL/2.png" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Heal</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="workplace">
+                <div class="masonry-item" data-category="workplace">
                     <a href="./resident.html">
-                        <img src="./assets/Hospice CBE/Picture14.png" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Hospice CBE/Picture14.png" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Hospice CBE</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="spiritual">
+                <div class="masonry-item" data-category="spiritual">
                     <a href="./resident.html">
-                        <img src="./assets/Jaferullah/2023-12-05_Photos2.png" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Jaferullah/2023-12-05_Photos2.png" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Jaferullah</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="residential">
+                <div class="masonry-item" data-category="residential">
                     <a href="./resident.html">
-                        <img src="./assets/Karur Residence/image10.jpg" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Karur Residence/image10.jpg" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Karur Residence</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="landscape">
+                <div class="masonry-item" data-category="landscape">
                     <a href="./resident.html">
-                        <img src="./assets/Kavundampalayam Urban Development/CDC_129879_1.jpg" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Kavundampalayam Urban Development/CDC_129879_1.jpg" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Kavundampalayam Urban Development</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="residential">
+                <div class="masonry-item" data-category="residential">
                     <a href="./resident.html">
-                        <img src="./assets/Kumarasamy Residence/Int-5.jpg" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Kumarasamy Residence/Int-5.jpg" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Kumaraswamy Residence</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="residential">
+                <div class="masonry-item" data-category="residential">
                     <a href="./resident.html">
-                        <img src="./assets/Murugan Residency/Image1.png" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Murugan Residency/Image1.png" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Murugan Residence</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="residential">
+                <div class="masonry-item" data-category="residential">
                     <a href="./resident.html">
-                        <img src="./assets/Prabhu Residence/Image1.png" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Prabhu Residence/Image1.png" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Prabhu Residence</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="residential">
+                <div class="masonry-item" data-category="residential">
                     <a href="./resident.html">
-                        <img src="./assets/Ramachandra Residence/Image4.png" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Ramachandra Residence/Image4.png" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Ramachandra Residence</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="workplace">
+                <div class="masonry-item" data-category="workplace">
                     <a href="./resident.html">
-                        <img src="./assets/Reflect Dermatology Care/1.png" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Reflect Dermatology Care/1.png" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Reflect Dermatology Care</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="workplace">
+                <div class="masonry-item" data-category="workplace">
                     <a href="./resident.html">
-                        <img src="./assets/Satara Health Care/Image15.png" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Satara Health Care/Image15.png" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Satara Health Care</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="residential">
+                <div class="masonry-item" data-category="residential">
                     <a href="./resident.html">
-                        <img src="./assets/Skanda Mahal/IMG_20211117_110048.jpg" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Skanda Mahal/IMG_20211117_110048.jpg" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Skanda Mahal</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="workplace">
+                <div class="masonry-item" data-category="workplace">
                     <a href="./resident.html">
-                        <img src="./assets/Textiles Karur/image30.jpg" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Textiles Karur/image30.jpg" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Textiles Karur</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="residential">
+                <div class="masonry-item" data-category="residential">
                     <a href="./resident.html">
-                        <img src="./assets/The Grape Escape/Outside.png" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/The Grape Escape/Outside.png" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">The Grape Escape</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
                     </a>
                 </div>
-                <div class="relative bg-gray-800" data-category="residential">
+                <div class="masonry-item" data-category="residential">
                     <a href="./resident.html">
-                        <img src="./assets/Thomas Residency/Screenshot 2022-05-14 105828.jpg" alt="Residential Project" class="image-height w-full object-cover">
-                        <div class="image-overlay">
+                        <img src="./assets/Thomas Residency/Screenshot 2022-05-14 105828.jpg" alt="Residential Project">
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center">
                             <p class="image-caption">Thomas Residence</p>
                             <h3 class="image-caption">Mumbai</h3>
                         </div>
@@ -412,6 +570,7 @@
     </div>
 
     <!-- JavaScript -->
+     <script src="./projects.js"></script>
     <script>
         const filterMenu = document.getElementById('filterMenu');
         const openFilters = document.getElementById('openFilters');
@@ -436,7 +595,74 @@
         closeMobileMenu.addEventListener('click', () => {
             mobileMenu.classList.add('-translate-x-full');
         });
+
+        const filterLinks = document.querySelectorAll('[data-filter]');
+        const projects = document.querySelectorAll('.masonry-item');
+
+        filterLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const filter = link.getAttribute('data-filter');
+                
+                projects.forEach(project => {
+                    if (filter === 'all' || project.getAttribute('data-category') === filter) {
+                        project.style.display = 'block';
+                    } else {
+                        project.style.display = 'none';
+                    }
+                });
+
+                // Recalculate masonry layout after filtering
+                setTimeout(() => {
+                    window.dispatchEvent(new Event('resize'));
+                }, 100);
+
+                filterMenu.classList.add('translate-x-full');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+        // Force reflow on images load to prevent layout issues
+        const images = document.querySelectorAll('.masonry-item img');
+        let loadedImages = 0;
+
+        function handleImageLoad() {
+            loadedImages++;
+            if (loadedImages === images.length) {
+                // All images loaded, trigger reflow
+                document.querySelector('.masonry-grid').style.opacity = '1';
+            }
+        }
+
+        images.forEach(img => {
+            if (img.complete) {
+                handleImageLoad();
+            } else {
+                img.addEventListener('load', handleImageLoad);
+            }
+        });
+
+        // Update layout when filtering
+        const filterLinks = document.querySelectorAll('[data-filter]');
+        filterLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const filter = link.getAttribute('data-filter');
+                
+                document.querySelectorAll('.masonry-item').forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'inline-block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Close filter menu
+                document.getElementById('filterMenu').classList.add('translate-x-full');
+            });
+        });
+    });
     </script>
-    <script src="./projects.js"></script>
+    
 </body>
 </html>
