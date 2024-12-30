@@ -46,10 +46,6 @@
         transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .masonry-item:hover img {
-        transform: scale(1.05);
-    }
-
     .image-overlay {
         position: absolute;
         inset: 0;
@@ -102,40 +98,6 @@
             top: 6rem;
             right: 1rem;
             z-index: 50;
-        }
-
-        .project-grid {
-            column-count: 2;
-            column-gap: 2rem;
-            padding: 0 2rem;
-            max-width: 1800px;
-            margin: 0 auto;
-        }
-
-        .project-item {
-            break-inside: avoid;
-            margin-bottom: 2rem;
-            position: relative;
-            overflow: hidden;
-            background: #f5f5f5;
-        }
-
-        @media (max-width: 768px) {
-            .project-grid {
-                column-count: 1;
-            }
-        }
-
-        /* Project item styles */
-        .project-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .project-item:hover img {
-            transform: scale(1.1);
         }
 
         /* Overlay styles */
@@ -377,7 +339,7 @@
                     <a href="./resident.html">
                     <img src="./assets/Arunraj Residence/Image3-enhanced.png" 
                          alt="Arunraj Residence">
-                    <div class="image-overlay absolute inset-0 flex items-center justify-center">
+                    <div class="image-overlay">
                         <div class="text-center text-white">
                             <h3 class="text-2xl font-semibold mb-2">Arunraj Residence</h3>
                             <p class="text-lg">Mumbai</p>
@@ -389,8 +351,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Boopathy Residence/1 (2).jpg" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="text-2xl font-semibold mb-2">Boopathy Residence</p>
-                            <h3 class="text-lg">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Boopathy Residence</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -398,8 +360,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Canara Bank CBE/20190609_142207-ed.png" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Canar Bank CBE</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Canar Bank CBE</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -407,8 +369,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Club B1 BLR/Entry_0.png" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Club B1 BLR</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Club B1 BLR</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -416,8 +378,8 @@
                     <a href="./resident.html">
                         <img src="./assets/CODISSIA CBE/FINAL.png" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Codissia CBE</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Codissia CBE</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -425,8 +387,8 @@
                     <a href="./resident.html">
                         <img src="./assets/DJ Academy/DJ academy 1.jpg" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">DJ Academy</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">DJ Academy</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -434,8 +396,8 @@
                     <a href="./resident.html">
                         <img src="./assets/HEAL/2.png" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Heal</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Heal</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -443,8 +405,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Hospice CBE/Picture14.png" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Hospice CBE</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Hospice CBE</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -452,8 +414,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Jaferullah/2023-12-05_Photos2.png" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Jaferullah</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Jaferullah</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -461,8 +423,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Karur Residence/image10.jpg" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Karur Residence</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Karur Residence</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -470,8 +432,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Kavundampalayam Urban Development/CDC_129879_1.jpg" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Kavundampalayam Urban Development</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Kavundampalayam Urban Development</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -479,8 +441,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Kumarasamy Residence/Int-5.jpg" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Kumaraswamy Residence</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Kumaraswamy Residence</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -488,8 +450,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Murugan Residency/Image1.png" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Murugan Residence</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Murugan Residence</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -497,8 +459,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Prabhu Residence/Image1.png" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Prabhu Residence</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Prabhu Residence</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -506,8 +468,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Ramachandra Residence/Image4.png" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Ramachandra Residence</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Ramachandra Residence</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -515,8 +477,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Reflect Dermatology Care/1.png" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Reflect Dermatology Care</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Reflect Dermatology Care</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -524,8 +486,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Satara Health Care/Image15.png" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Satara Health Care</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Satara Health Care</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -533,8 +495,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Skanda Mahal/IMG_20211117_110048.jpg" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Skanda Mahal</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Skanda Mahal</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -542,8 +504,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Textiles Karur/image30.jpg" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Textiles Karur</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Textiles Karur</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -551,8 +513,8 @@
                     <a href="./resident.html">
                         <img src="./assets/The Grape Escape/Outside.png" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">The Grape Escape</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">The Grape Escape</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
@@ -560,8 +522,8 @@
                     <a href="./resident.html">
                         <img src="./assets/Thomas Residency/Screenshot 2022-05-14 105828.jpg" alt="Residential Project">
                         <div class="image-overlay absolute inset-0 flex items-center justify-center">
-                            <p class="image-caption">Thomas Residence</p>
-                            <h3 class="image-caption">Mumbai</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Thomas Residence</p>
+                            <p class="text-lg">Mumbai</h3>
                         </div>
                     </a>
                 </div>
